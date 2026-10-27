@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banka ekstresini tabloya aktarma · Tılsım Perisi</title>
+<meta name="description" content="Banka ekstresini yapay zekâyla Google E-Tablolar'a ya da Excel'e aktarmak ve tek formülle kontrol etmek için 5 adımlık hazır prompt seti.">
+<meta name="theme-color" content="#021637">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Tılsım Perisi">
+<meta property="og:title" content="Banka ekstresini yapay zekâyla tabloya aktarın">
+<meta property="og:description" content="5 adımlık hazır prompt seti, kontrol formülleri ve kurgusal örnek ekstre.">
+<meta property="og:url" content="https://tilsimperisi.github.io/v01/">
+<meta property="og:image" content="https://tilsimperisi.github.io/assets/paylasim.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/stil.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-kopya" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="i-tamam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-indir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></symbol>
+  <symbol id="i-bilgi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+</svg>
+
+<header class="ust">
+  <div class="kap">
+    <a class="ust-logo" href="../" aria-label="Tılsım Perisi ana sayfa"><img src="../assets/logo.png" alt="Tılsım Perisi" width="100" height="40"></a>
+    <a class="ust-baglanti" href="https://www.youtube.com/@t%C4%B1ls%C4%B1mperisii" target="_blank" rel="noopener">
+      <svg aria-hidden="true"><use href="#i-youtube"/></svg><span>YouTube kanalı</span>
+    </a>
+  </div>
+</header>
+
+<section class="giris">
+  <div class="kap">
+    <p class="ust-etiket">V01 · Muhasebe ve ön muhasebe</p>
+    <h1>Banka ekstresini yapay zekâyla tabloya aktarın, <em>tek formülle kontrol edin</em></h1>
+    <p class="ozet">Promptları sırayla kopyalayıp yapay zekâ sohbetine yapıştırın. Tabloyu Google E-Tablolar'a ya da Excel'e aktarın, bakiyeyi formülle, satırları ekstreyle karşılaştırın.</p>
+    <ul class="cipler" aria-label="Özet">
+      <li>5 adım</li>
+      <li>ChatGPT · Gemini · Claude (ücretsiz sürüm)</li>
+      <li>Google E-Tablolar · Excel</li>
+    </ul>
+    <div class="dugmeler">
+      <a class="dugme dugme-ana" href="ornek-ekstre.pdf" download>
+        <svg aria-hidden="true"><use href="#i-indir"/></svg>Örnek ekstreyi indir (PDF)
+      </a>
+      <a class="dugme dugme-ikinci" href="#adim-1">Adım 1'e geç</a>
+    </div>
+  </div>
+</section>
+
+<div class="kap duzen">
+  <nav class="icindekiler" aria-label="Adımlar">
+    <p>Adımlar</p>
+    <ol>
+      <li><a href="#adim-1"><b>1</b>PDF ekstreyi tabloya çevir</a></li>
+      <li><a href="#adim-2"><b>2</b>Her satıra kategori ver</a></li>
+      <li><a href="#adim-3"><b>3</b>E-Tablolar'a aktar</a></li>
+      <li><a href="#adim-4"><b>4</b>Formülle kontrol et</a></li>
+      <li><a href="#adim-5"><b>5</b>Ekstreyle karşılaştır</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section class="adim" id="adim-1" aria-labelledby="b1">
+      <div class="adim-bas">
+        <span class="adim-no" aria-hidden="true">1</span>
+        <div>
+          <h2 id="b1">PDF ekstreyi tabloya çevir</h2>
+          <p>Yeni bir sohbet açın, ekstreyi yükleyin ve bu promptu gönderin.</p>
+        </div>
+      </div>
+      <div class="kart">
+        <div class="kart-bas">
+          <span class="kart-ad"><strong>Prompt</strong> · Adım 1</span>
+          <button class="kopyala" type="button" data-hedef="p1"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+        </div>
+<pre id="p1">Ekteki banka ekstresini tabloya çevir. Gerçek bir ekstre kullanıyorsam ad, hesap numarası ve IBAN'ı önce kendim maskeledim.
+
+Kurallar:
+- Sütunlar: Tarih | Açıklama | Borç | Alacak | Bakiye
+- Her satırı ekstrede yazdığı gibi aktar. Bakiye dahil hiçbir sayıyı düzeltme, hesaplama, yuvarlama.
+- Açıklaması boş olan satırı atlama; Açıklama hücresine "(boş)" yaz.
+- Tutarları Türk biçiminde yaz: 1.234,56 (TL işareti yok). Boş hücreyi boş bırak, 0 yazma.
+- Devir satırını da ilk satır olarak al.
+- Metni yapıştırdıysam ve Borç/Alacak sütunları karıştıysa: bakiye azalıyorsa tutar Borç, artıyorsa Alacak.
+- Ekstrede olmayan hiçbir satırı ekleme.
+- Tablonun altına tek satır yaz: "Toplam satır: [sayı]".</pre>
+      </div>
+    </section>
+
+    <section class="adim" id="adim-2" aria-labelledby="b2">
+      <div class="adim-bas">
+        <span class="adim-no" aria-hidden="true">2</span>
+        <div>
+          <h2 id="b2">Her satıra kategori ver</h2>
+          <p>Aynı sohbette gönderin. Kategori listesini kendi işinize göre değiştirebilirsiniz.</p>
+        </div>
+      </div>
+      <div class="kart">
+        <div class="kart-bas">
+          <span class="kart-ad"><strong>Prompt</strong> · Adım 2</span>
+          <button class="kopyala" type="button" data-hedef="p2"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+        </div>
+<pre id="p2">Bu tabloya "Kategori" sütunu ekle. Yalnızca şu listeden seç:
+Kira, Maaş, SGK, Vergi, POS tahsilatı, Müşteri tahsilatı, Tedarikçi ödemesi, Akaryakıt, Fatura (elektrik, su, internet), Ofis / market gideri, Banka masrafı, Kredi kartı ödemesi, Faiz geliri
+
+Kurallar:
+- `Kategori` sütununu F sütununa, yani `Bakiye` sütunundan hemen sonraya yerleştir. Son sütun sırası: Tarih (A) | Açıklama (B) | Borç (C) | Alacak (D) | Bakiye (E) | Kategori (F).
+- Açıklaması boş ya da işlem türü gerçekten belirsiz satıra "KONTROL" yaz; tahmin etme. Ancak açıklamada POS/P0S ve tahsilat ibaresi varsa, büyük-küçük harf veya yazım farkına rağmen kesin olarak `POS tahsilatı` kategorisini ver; bu satırlara `KONTROL` yazma. Örnek: `Pos tahsilatı`, `P0S TAHSILAT`, `POS TAHSİLAT 02.09` → `POS tahsilatı`.
+- Aynı işlem türünü açıklamadaki yazım farklarından bağımsız olarak aynı kategoriyle eşleştir.
+- Devir satırına kategori yazma.
+- Diğer sütunları değiştirme.
+- Tablonun altında, "KONTROL" yazdığın satırları tarihleriyle listele.</pre>
+      </div>
+    </section>
+
+    <section class="adim" id="adim-3" aria-labelledby="b3">
+      <div class="adim-bas">
+        <span class="adim-no" aria-hidden="true">3</span>
+        <div>
+          <h2 id="b3">E-Tablolar'a aktar</h2>
+          <p>Aynı sohbette gönderin. Gelen kod bloğunu kopyalayıp boş bir tablonun A1 hücresine yapıştırın.</p>
+        </div>
+      </div>
+      <div class="kart">
+        <div class="kart-bas">
+          <span class="kart-ad"><strong>Prompt</strong> · Adım 3</span>
+          <button class="kopyala" type="button" data-hedef="p3"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+        </div>
+<pre id="p3">Tabloyu Google E-Tablolar'a yapıştırabileceğim biçimde ver: sütunları sekme (Tab) karakteriyle ayır, ilk satır başlık olsun, kod bloğu içinde yaz. Sütunları tam olarak şu sırada ve konumda ver: A Tarih, B Açıklama, C Borç, D Alacak, E Bakiye, F Kategori, G Hesaplanan, H Kontrol. Bu sıralamayı değiştirme ve sütunların yerini tahmin etme. `Hesaplanan` ve `Kontrol` sütunlarının hücrelerini boş bırak; bu sütunlara formül yazma. Sayılarda binlik ayırıcı nokta, ondalık virgül kalsın; TL işareti ve boşluk olmasın.</pre>
+      </div>
+    </section>
+
+    <section class="adim" id="adim-4" aria-labelledby="b4">
+      <div class="adim-bas">
+        <span class="adim-no" aria-hidden="true">4</span>
+        <div>
+          <h2 id="b4">Formülle kontrol et</h2>
+          <p>Formülleri G2 ve H2 hücrelerine yapıştırıp son satıra kadar aşağı çekin. HATA çıkan satırı ekstreden kontrol edin.</p>
+        </div>
+      </div>
+
+      <div class="sekmeler" role="tablist" aria-label="Program">
+        <button type="button" role="tab" id="s-et" data-ad="et" aria-controls="panel-et" aria-selected="true">Google E-Tablolar</button>
+        <button type="button" role="tab" id="s-ex" data-ad="ex" aria-controls="panel-ex" aria-selected="false">Excel (Türkçe)</button>
+      </div>
+
+      <div class="sekme-panel" id="panel-et" role="tabpanel" aria-labelledby="s-et">
+        <p class="panel-baslik">Google E-Tablolar</p>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>G2</strong> · Hesaplanan bakiye</span>
+            <button class="kopyala" type="button" data-hedef="f1"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="f1">=$E$2+SUM($D$2:D2)-SUM($C$2:C2)</pre>
+        </div>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>H2</strong> · Bakiye kontrolü</span>
+            <button class="kopyala" type="button" data-hedef="f2"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="f2">=IF(ROUND(G2-E2;2)=0;"TAMAM";"HATA")</pre>
+        </div>
+      </div>
+
+      <div class="sekme-panel" id="panel-ex" role="tabpanel" aria-labelledby="s-ex" hidden>
+        <p class="panel-baslik">Excel (Türkçe)</p>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>G2</strong> · Hesaplanan bakiye</span>
+            <button class="kopyala" type="button" data-hedef="f3"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="f3">=$E$2+TOPLA($D$2:D2)-TOPLA($C$2:C2)</pre>
+        </div>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>H2</strong> · Bakiye kontrolü</span>
+            <button class="kopyala" type="button" data-hedef="f4"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="f4">=EĞER(YUVARLA(G2-E2;2)=0;"TAMAM";"HATA")</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="adim" id="adim-5" aria-labelledby="b5">
+      <div class="adim-bas">
+        <span class="adim-no" aria-hidden="true">5</span>
+        <div>
+          <h2 id="b5">Tabloyu ekstreyle karşılaştır <span class="etiket">Yeni sohbet</span></h2>
+          <p>Yeni bir sohbet açıp ekstreyi yeniden yükleyin. Tablodaki A-F sütunlarını kopyalayıp promptun en altına yapıştırın.</p>
+        </div>
+      </div>
+      <div class="kart">
+        <div class="kart-bas">
+          <span class="kart-ad"><strong>Prompt</strong> · Adım 5</span>
+          <button class="kopyala" type="button" data-hedef="p5"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+        </div>
+<pre id="p5" data-son-satir>Ekteki banka ekstresi kaynak belgedir. Bu mesajın sonuna yapıştırdığım tablo, bu ekstreden yapay zekâyla çıkarıldı. Tabloyu ekstreyle satır satır karşılaştır.
+
+Kurallar:
+- Hiçbir değeri düzeltme ya da yeniden hesaplama; yalnızca ekstrede yazanla tabloda yazanı karşılaştır.
+- Her satırda Tarih, Açıklama, Borç, Alacak ve Bakiye değerlerine bak. Kategori sütununu karşılaştırmaya katma.
+- Önce iki sayı yaz: ekstredeki satır sayısı (devir dahil) ve tablodaki satır sayısı.
+- Farkları tek tabloda listele: Tarih | Sütun | Ekstrede | Tabloda | Fark türü (eksik satır / fazla satır / farklı değer / Borç-Alacak yer değiştirmiş).
+- Ekstrede olup tabloda olmayan ve tabloda olup ekstrede olmayan satırları da bu listeye ekle.
+- Okuyamadığın ya da emin olmadığın değere "OKUNAMADI" yaz; tahmin etme.
+- Fark yoksa yalnızca şunu yaz: "Fark yok: [sayı] satırın hepsi ekstreyle aynı."
+
+Tablo:</pre>
+      </div>
+    </section>
+
+    <aside class="not">
+      <svg aria-hidden="true"><use href="#i-bilgi"/></svg>
+      <p>Örnek ekstredeki banka, şirket ve tutarlar kurgusaldır. Kendi ekstrenizi kullanırken ad, hesap numarası ve IBAN'ı önce maskeleyin. Yapay zekâ taslağı hazırlar; kontrolü formül yapar, son kararı siz verirsiniz.</p>
+    </aside>
+  </main>
+</div>
+
+<footer class="alt">
+  <div class="kap">
+    <a class="alt-logo" href="https://www.youtube.com/@t%C4%B1ls%C4%B1mperisii" target="_blank" rel="noopener"><img src="../assets/logo.png" alt="Tılsım Perisi YouTube kanalı" width="240" height="96" loading="lazy"></a>
+    <a class="alt-kanal" href="https://www.youtube.com/@t%C4%B1ls%C4%B1mperisii" target="_blank" rel="noopener">youtube.com/@tılsımperisii</a>
+    <small>© 2026 Tılsım Perisi · Sıkıcı işlerinizi yapay zekâya devredin</small>
+  </div>
+</footer>
+
+<script src="../assets/sayfa.js"></script>
+</body>
+</html>
