@@ -198,7 +198,7 @@ Kurallar:
         <span class="adim-no" aria-hidden="true">5</span>
         <div>
           <h2 id="b5">Tabloyu ekstreyle karşılaştır <span class="etiket">Yeni sohbet</span></h2>
-          <p>Yeni bir sohbet açıp ekstreyi yeniden yükleyin. Tablodaki A-F sütunlarını kopyalayıp promptun en altına yapıştırın.</p>
+          <p>Yeni bir sohbet açın. Ekstreyi ve tabloyu yükleyin: E-Tablolar'da Dosya > İndir > Microsoft Excel (.xlsx). Yapay zekâ E-Tablolar linkini açamaz. Dosya yükleyemiyorsanız A-F sütunlarını kopyalayıp promptun en altına yapıştırın.</p>
         </div>
       </div>
       <div class="kart">
@@ -206,18 +206,19 @@ Kurallar:
           <span class="kart-ad"><strong>Prompt</strong> · Adım 5</span>
           <button class="kopyala" type="button" data-hedef="p5"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
         </div>
-<pre id="p5" data-son-satir>Ekteki banka ekstresi kaynak belgedir. Bu mesajın sonuna yapıştırdığım tablo, bu ekstreden yapay zekâyla çıkarıldı. Tabloyu ekstreyle satır satır karşılaştır.
+<pre id="p5" data-son-satir>Ekteki banka ekstresi kaynak belgedir. Ekteki tablo dosyası (ya da bu mesajın sonuna yapıştırdığım tablo) bu ekstreden yapay zekâyla çıkarıldı. Tabloyu ekstreyle satır satır karşılaştır.
 
 Kurallar:
 - Hiçbir değeri düzeltme ya da yeniden hesaplama; yalnızca ekstrede yazanla tabloda yazanı karşılaştır.
-- Her satırda Tarih, Açıklama, Borç, Alacak ve Bakiye değerlerine bak. Kategori sütununu karşılaştırmaya katma.
+- Her satırda yalnızca Tarih, Açıklama, Borç, Alacak ve Bakiye değerlerine bak. Kategori, Hesaplanan ve Kontrol sütunlarını karşılaştırmaya katma.
+- Biçim farkını fark sayma: TL, TRY ya da ₺ işareti, binlik ayırıcı, boşluk. Ekstrede boş olan açıklama tabloda "(boş)" yazıyorsa bu da fark değildir.
 - Önce iki sayı yaz: ekstredeki satır sayısı (devir dahil) ve tablodaki satır sayısı.
-- Farkları tek tabloda listele: Tarih | Sütun | Ekstrede | Tabloda | Fark türü (eksik satır / fazla satır / farklı değer / Borç-Alacak yer değiştirmiş).
+- Yalnızca farklı olan değerleri tek tabloda listele; aynı olanları yazma: Tarih | Sütun | Ekstrede | Tabloda | Fark türü (eksik satır / fazla satır / farklı değer / Borç-Alacak yer değiştirmiş).
 - Ekstrede olup tabloda olmayan ve tabloda olup ekstrede olmayan satırları da bu listeye ekle.
 - Okuyamadığın ya da emin olmadığın değere "OKUNAMADI" yaz; tahmin etme.
 - Fark yoksa yalnızca şunu yaz: "Fark yok: [sayı] satırın hepsi ekstreyle aynı."
 
-Tablo:</pre>
+Tablo (dosya eklemediysem buraya yapıştırdım):</pre>
       </div>
     </section>
 
