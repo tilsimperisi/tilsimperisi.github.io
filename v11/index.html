@@ -10,7 +10,7 @@
 <meta property="og:locale" content="tr_TR">
 <meta property="og:site_name" content="Tılsım Perisi">
 <meta property="og:title" content="Kart okuyucu dökümünden puantaj tablosu">
-<meta property="og:description" content="6 adımlık hazır prompt seti, formüller ve kurgusal örnek dosyalar.">
+<meta property="og:description" content="4 adımlık hazır prompt seti, formüller ve kurgusal örnek dosyalar.">
 <meta property="og:url" content="https://tilsimperisi.github.io/v11/">
 <meta property="og:image" content="https://tilsimperisi.github.io/assets/paylasim.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -45,7 +45,7 @@
     <p class="ust-etiket">V11 · İK ve ofis</p>
     <h1>Kart okuyucu dökümünden puantaj tablosu, <em>tek formülle kontrol edin</em></h1>
     <ul class="cipler" aria-label="Özet">
-      <li>6 adım</li>
+      <li>4 adım</li>
       <li>ChatGPT (ücretsiz sürüm)</li>
       <li>Google E-Tablolar</li>
     </ul>
@@ -53,7 +53,7 @@
       <a class="dugme dugme-ana" href="ornek-kayit.csv" download>
         <svg aria-hidden="true"><use href="#i-indir"/></svg>Kart okuyucu dökümü (CSV)
       </a>
-      <a class="dugme dugme-ana" href="izin-notlari.txt" download>
+      <a class="dugme dugme-ana" href="data:text/plain;charset=utf-8,%C4%B0zin%20ve%20rapor%20bilgileri%20%28%C4%B0K%20notlar%C4%B1%2C%20Eyl%C3%BCl%202026%2C%20%C3%96rnek%20A.%C5%9E.%29%0A-%20Selin%20Ayd%C4%B1n%3A%2014%2C%2015%20ve%2016%20Eyl%C3%BCl%20y%C4%B1ll%C4%B1k%20izin.%0A-%20Murat%20Ko%C3%A7%3A%208%20ve%209%20Eyl%C3%BCl%20raporlu.%0A-%20Burak%20%C5%9Eahin%3A%2011%20Eyl%C3%BCl%20%C3%BCcretsiz%20izin.%0A" download="izin-notlari.txt">
         <svg aria-hidden="true"><use href="#i-indir"/></svg>İzin notları (TXT)
       </a>
       <a class="dugme dugme-ikinci" href="#adim-1">Adım 1'e geç</a>
@@ -66,17 +66,24 @@
     <section class="adim" id="adim-1" aria-label="Adım 1">
       <div class="adim-bas">
         <span class="adim-no"><span class="gizli">Adım </span>1</span>
+        <div><h2>Puantaj tablosunu kur</h2><p>Prompt · iki dosyayı yükle, gönder, gelen tabloyu A1'e yapıştır</p></div>
       </div>
         <div class="kart">
           <div class="kart-bas">
-            <span class="kart-ad"><strong>Prompt</strong> · Adım 1</span>
+            <span class="kart-ad"><strong>Prompt</strong> · Puantaj + kurallar + özet</span>
             <button class="kopyala" type="button" data-hedef="k1"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
           </div>
-<pre id="k1">Ekte iki belge var: kart okuyucu dökümü (her okutma ayrı satır: sicil, personel, tarih ve saat, yön) ve İK'nın izin notları. Bunlardan kişi-gün başına tek satırlık bir puantaj tablosu çıkar.
+<pre id="k1">Ekte iki belge var: kart okuyucu dökümü (her okutma ayrı satır: sicil, personel, tarih ve saat, yön) ve İK'nın izin notları. Bunlardan Google E-Tablolar'a tek seferde yapıştırabileceğim eksiksiz bir puantaj tablosu hazırla: kişi-gün puantajı, kural hücreleri ve aylık özet.
 
-Kurallar:
-- Sütunları şu sırayla ver: Sicil No (A) | Personel (B) | Tarih (C) | Giriş (D) | Çıkış (E) | Gün türü (F) | Net süre (saat) (G) | Normal süreyi aşan (saat) (H) | Hafta no (I). G, H ve I sütunlarını boş bırak, başlıklarını yaz.
-- Bir çalışanın bir gündeki ilk "Giriş" okutması Giriş, son "Çıkış" okutması Çıkış saatidir. Aradaki okutmaları (öğle arası gibi) ve aynı yönde art arda gelen çift okutmaları dikkate alma; ilk girişi ve son çıkışı al.
+Yerleşim (A1'den başlar, her şey tek tabloda):
+- A1:I1 başlıklar: Sicil No | Personel | Tarih | Giriş | Çıkış | Gün türü | Net süre (saat) | Normal süreyi aşan (saat) | Hafta no. A2'den itibaren kişi-gün başına bir satır.
+- J sütunu boş.
+- K1:L4: Parametre | Değer; Günlük mola (saat) | 1; Günlük normal süre (saat) | 8; Ayın iş günü sayısı | 22.
+- M sütunu boş.
+- N1:W1 başlıklar: Sicil No | Personel | Çalışılan iş günü | Toplam net süre (saat) | Normal süreyi aşan (saat) | En yüksek haftalık toplam (saat) | Yıllık izin | Rapor | Ücretsiz izin | Kontrol. N2:N6'ya dökümdeki beş sicil numarasını yaz. W sütununu boş bırak.
+
+Puantaj satırları (A:F) için kurallar:
+- Bir çalışanın bir gündeki ilk "Giriş" okutması Giriş, son "Çıkış" okutması Çıkış saatidir. Aradaki okutmaları (öğle arası gibi) ve aynı yönde art arda gelen çift okutmaları dikkate alma.
 - Saatleri hesaplama, yuvarlama ya da düzeltme. Dökümde okutması olmayan günler için satır uydurma. İzin notlarında geçen günler için satır ekle (Giriş ve Çıkış boş).
 - Tarihi GG.AA.YYYY, saati SS:DD yaz (ör. 09:03). Boş saat hücresini boş bırak.
 - Aynı sicil numarasının adı farklı yazılmışsa (büyük-küçük harf gibi) en çok kullanılan yazımı kullan.
@@ -88,181 +95,53 @@ Kurallar:
   KONTROL: yukarıdakilerin hiçbirine uymayan satır
 - Hafta sonu için haftanın gününü tarihten kendin bul.
 - Satırları tarihe, aynı tarihte sicil numarasına göre sırala.
-- Sütunları sekme (Tab) karakteriyle ayır, ilk satır başlık olsun, kod bloğu içinde yaz.
-- Tablonun altında, kod bloğunun dışında tek satır yaz: "Toplam satır: [sayı]".</pre>
+
+Formüller (G, H, I sütunları ve O:V özet hücreleri). Her satıra o satırın kendi numarasıyla yaz (G2 için D2 ve E2, G3 için D3 ve E3 gibi):
+- G: giriş (D) ve çıkış (E) ikisi de doluysa net süre = (çıkış - giriş) saat cinsinden, eksi günlük mola (L2); ikisinden biri boşsa boş bırak. 2 ondalığa yuvarla.
+- H: G boşsa boş bırak. Gün türü (F) "Hafta sonu çalıştı" ise net sürenin tamamıdır. Aksi halde net süreden günlük normal süreyi (L3) çıkar; negatifse 0 olsun. Başka bir eşik ya da yuvarlama kuralı uygulama. 2 ondalığa yuvarla.
+- I: C sütunundaki tarihin ISO hafta numarası.
+- O: N sütunundaki sicil numarasına ait personel adı.
+- P: bu sicilin Gün türü "Çalıştı" olan satır sayısı.
+- Q: bu sicilin Net süre (G) toplamı. R: bu sicilin Normal süreyi aşan (H) toplamı.
+- S: bu sicilin hafta bazında (I sütunu) net süre toplamlarının en büyüğü. Hafta numaralarını tabloda geçen tarihlerden sen belirle.
+- T, U, V: bu sicilin Gün türü sırasıyla "Yıllık izin", "Rapor", "Ücretsiz izin" olan satır sayısı.
+
+Biçim:
+- Formülleri "=" ile başlat. Fonksiyon adlarını İngilizce yaz, argüman ayırıcısı olarak noktalı virgül (;) kullan. Parametreleri $L$2, $L$3 gibi hücre adresiyle kullan; sayıyı formülün içine yazma. Özet formüllerinde aralıkları sabitle ($A$2:$A$200 gibi).
+- Formüllerdeki bütün metinleri ve boş metni düz çift tırnak (") içine yaz; tırnaksız yazma. G2 ve H2 şu biçimde olsun, bütün satırlara aynı yapıyı uygula (yalnızca satır numarası değişir):
+  G2: =IF(OR(D2="";E2="");"";ROUND((E2-D2)*24-$L$2;2))
+  H2: =IF(G2="";"";ROUND(IF(F2="Hafta sonu çalıştı";G2;MAX(0;G2-$L$3));2))
+- Bütün tabloyu sekme (Tab) karakteriyle ayırarak tek bir kod bloğunda ver. Boş hücreleri boş bırak; her satırda sütun sayısı aynı olsun. Dosya, .tsv ya da .csv oluşturma, indirme bağlantısı verme; tabloyu yalnızca sohbette kod bloğu olarak yaz.
+- Kod bloğunun dışında tek satır yaz: "Toplam satır: [başlık hariç veri satırı sayısı]".</pre>
         </div>
+        <aside class="not">
+          <svg aria-hidden="true"><use href="#i-bilgi"/></svg>
+          <p>Tabloyu E-Tablolar'a yapıştırınca Net süre sütunu "04:19" gibi saat olarak görünebilir. E-Tablolar saat çıkarma sonucunu saat biçimine çevirir; değer doğrudur. G2:H111'i seçip <strong>Biçim &gt; Sayı &gt; Sayı</strong> (ya da <strong>Ctrl+Shift+1</strong>) uygulayın.</p>
+        </aside>
     </section>
 
     <section class="adim" id="adim-2" aria-label="Adım 2">
       <div class="adim-bas">
         <span class="adim-no"><span class="gizli">Adım </span>2</span>
+        <div><h2>Kontrol formülü</h2><p>Formül · yapay zekâ yok, W sütununa yapıştır</p></div>
       </div>
         <div class="kart">
           <div class="kart-bas">
-            <span class="kart-ad"><strong>Parametreler</strong> · K1</span>
-            <button class="kopyala" type="button" data-hedef="k2"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre id="k2">Parametre	Değer
-Günlük mola (saat)	1
-Günlük normal süre (saat)	8
-Ayın iş günü sayısı	22</pre>
-        </div>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>Prompt</strong> · Adım 2</span>
-            <button class="kopyala" type="button" data-hedef="k3"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre id="k3">Tabloyu Google E-Tablolar'a yapıştırdım. Veri A1'den başlıyor, 1. satır başlık: A Sicil No, B Personel, C Tarih, D Giriş, E Çıkış, F Gün türü, G Net süre (saat), H Normal süreyi aşan (saat), I Hafta no. Parametreler: L2 günlük mola (saat), L3 günlük normal süre (saat), L4 ayın iş günü sayısı.
-
-G2, H2 ve I2 için formül yaz; ben üçünü de aşağı çekeceğim.
-- G2: giriş (D) ve çıkış (E) ikisi de doluysa net süre = (çıkış - giriş) saat cinsinden, eksi günlük mola (L2); ikisinden biri boşsa boş bırak. Sonucu 2 ondalığa yuvarla.
-- H2: G2 boşsa boş bırak. Gün türü (F) "Hafta sonu çalıştı" ise net sürenin tamamıdır. Aksi halde net süreden günlük normal süreyi (L3) çıkar; sonuç negatifse 0 olsun. Başka bir eşik ya da yuvarlama kuralı uygulama. Sonucu 2 ondalığa yuvarla.
-- I2: C sütunundaki tarihin ISO hafta numarası.
-- Formüllerde parametreleri hücre adresiyle ($L$2 gibi) kullan; sayıyı formülün içine yazma.
-- Fonksiyon adlarını İngilizce yaz, argüman ayırıcısı olarak noktalı virgül (;) kullan.
-- Yalnızca üç formülü ve bir cümle açıklamayı yaz; başka bir şey ekleme.</pre>
-        </div>
-        <p class="panel-baslik">Referans formüller</p>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>G2</strong> · Net süre</span>
-            <button class="kopyala" type="button" data-hedef="k4"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre class="tek" id="k4">=IF(OR(D2="";E2="");"";ROUND((E2-D2)*24-$L$2;2))</pre>
-        </div>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>H2</strong> · Normal süreyi aşan</span>
-            <button class="kopyala" type="button" data-hedef="k5"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre class="tek" id="k5">=IF(G2="";"";IF(F2="Hafta sonu çalıştı";G2;MAX(0;ROUND(G2-$L$3;2))))</pre>
-        </div>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>I2</strong> · Hafta no</span>
-            <button class="kopyala" type="button" data-hedef="k6"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre class="tek" id="k6">=WEEKNUM(C2;21)</pre>
-        </div>
-    </section>
-
-    <section class="adim" id="adim-3" aria-label="Adım 3">
-      <div class="adim-bas">
-        <span class="adim-no"><span class="gizli">Adım </span>3</span>
-      </div>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>Başlıklar</strong> · N1</span>
-            <button class="kopyala" type="button" data-hedef="k7"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre id="k7">Sicil No	Personel	Çalışılan iş günü	Toplam net süre (saat)	Normal süreyi aşan (saat)	En yüksek haftalık toplam (saat)	Yıllık izin	Rapor	Ücretsiz izin	Kontrol</pre>
-        </div>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>Sicil numaraları</strong> · N2</span>
-            <button class="kopyala" type="button" data-hedef="k8"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre id="k8">1001
-1002
-1003
-1004
-1005</pre>
-        </div>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>Prompt</strong> · Adım 3</span>
-            <button class="kopyala" type="button" data-hedef="k9"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre id="k9">Aynı tabloda N1:W1 başlıkları: N Sicil No, O Personel, P Çalışılan iş günü, Q Toplam net süre (saat), R Normal süreyi aşan (saat), S En yüksek haftalık toplam (saat), T Yıllık izin, U Rapor, V Ücretsiz izin, W Kontrol. N2:N6'da beş sicil numarası yazılı. Veri A2:I200 aralığında; hafta numaraları I sütununda ve bu ay 36, 37, 38, 39, 40.
-
-O2, P2, Q2, R2, S2, T2, U2, V2 için formül yaz; ben satır 6'ya kadar aşağı çekeceğim. W sütununa dokunma.
-- O2: N2'deki sicil numarasına ait personel adı (A ve B sütunlarından).
-- P2: bu sicilin Gün türü "Çalıştı" olan satır sayısı.
-- Q2: bu sicilin Net süre (G) toplamı. R2: bu sicilin Normal süreyi aşan (H) toplamı.
-- S2: bu sicilin hafta bazında (I sütunu) net süre toplamlarının en büyüğü.
-- T2, U2, V2: bu sicilin Gün türü sırasıyla "Yıllık izin", "Rapor", "Ücretsiz izin" olan satır sayısı.
-- Aralıkları sabitle ($A$2:$A$200 gibi). Fonksiyon adlarını İngilizce yaz, ayırıcı noktalı virgül (;).
-- Yalnızca formülleri yaz, her birinin başına hücre adını koy.</pre>
-        </div>
-        <p class="panel-baslik">Referans formüller</p>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>O2</strong> · Personel</span>
-            <button class="kopyala" type="button" data-hedef="k10"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre class="tek" id="k10">=IFERROR(INDEX($B$2:$B$200;MATCH(N2;$A$2:$A$200;0));"")</pre>
-        </div>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>P2</strong> · Çalışılan iş günü</span>
-            <button class="kopyala" type="button" data-hedef="k11"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre class="tek" id="k11">=COUNTIFS($A$2:$A$200;N2;$F$2:$F$200;"Çalıştı")</pre>
-        </div>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>Q2</strong> · Toplam net süre</span>
-            <button class="kopyala" type="button" data-hedef="k12"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre class="tek" id="k12">=SUMIF($A$2:$A$200;N2;$G$2:$G$200)</pre>
-        </div>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>R2</strong> · Normal süreyi aşan</span>
-            <button class="kopyala" type="button" data-hedef="k13"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre class="tek" id="k13">=SUMIF($A$2:$A$200;N2;$H$2:$H$200)</pre>
-        </div>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>S2</strong> · En yüksek haftalık toplam</span>
-            <button class="kopyala" type="button" data-hedef="k14"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre class="tek" id="k14">=MAX(SUMIFS($G$2:$G$200;$A$2:$A$200;N2;$I$2:$I$200;36);SUMIFS($G$2:$G$200;$A$2:$A$200;N2;$I$2:$I$200;37);SUMIFS($G$2:$G$200;$A$2:$A$200;N2;$I$2:$I$200;38);SUMIFS($G$2:$G$200;$A$2:$A$200;N2;$I$2:$I$200;39);SUMIFS($G$2:$G$200;$A$2:$A$200;N2;$I$2:$I$200;40))</pre>
-        </div>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>T2</strong> · Yıllık izin</span>
-            <button class="kopyala" type="button" data-hedef="k15"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre class="tek" id="k15">=COUNTIFS($A$2:$A$200;N2;$F$2:$F$200;"Yıllık izin")</pre>
-        </div>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>U2</strong> · Rapor</span>
-            <button class="kopyala" type="button" data-hedef="k16"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre class="tek" id="k16">=COUNTIFS($A$2:$A$200;N2;$F$2:$F$200;"Rapor")</pre>
-        </div>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>V2</strong> · Ücretsiz izin</span>
-            <button class="kopyala" type="button" data-hedef="k17"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
-          </div>
-<pre class="tek" id="k17">=COUNTIFS($A$2:$A$200;N2;$F$2:$F$200;"Ücretsiz izin")</pre>
-        </div>
-    </section>
-
-    <section class="adim" id="adim-4" aria-label="Adım 4">
-      <div class="adim-bas">
-        <span class="adim-no"><span class="gizli">Adım </span>4</span>
-      </div>
-        <div class="kart">
-          <div class="kart-bas">
-            <span class="kart-ad"><strong>W2</strong> · Kontrol</span>
+            <span class="kart-ad"><strong>Formül</strong> · Kontrol (W sütunu)</span>
             <button class="kopyala" type="button" data-hedef="k18"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
           </div>
 <pre class="tek" id="k18">=IF(P2+T2+U2+V2+COUNTIFS($A$2:$A$200;N2;$F$2:$F$200;"EKSİK*")=$L$4;"TAMAM";"HATA")</pre>
         </div>
     </section>
 
-    <section class="adim" id="adim-5" aria-label="Adım 5">
+    <section class="adim" id="adim-3" aria-label="Adım 3">
       <div class="adim-bas">
-        <span class="adim-no"><span class="gizli">Adım </span>5</span>
+        <span class="adim-no"><span class="gizli">Adım </span>3</span>
+        <div><h2>Kaynakla karşılaştır</h2><p>Prompt · yeni bir sohbette</p></div>
       </div>
         <div class="kart">
           <div class="kart-bas">
-            <span class="kart-ad"><strong>Prompt</strong> · Adım 5</span>
+            <span class="kart-ad"><strong>Prompt</strong> · Tablo kaynakla aynı mı</span>
             <button class="kopyala" type="button" data-hedef="k19"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
           </div>
 <pre id="k19">Ekteki kart okuyucu dökümü ve izin notları kaynak belgedir. Ekteki tablo dosyası (Puantaj sayfası) bu belgelerden yapay zekâyla çıkarıldı. Tabloyu kaynakla karşılaştır.
@@ -279,13 +158,14 @@ Kurallar:
         </div>
     </section>
 
-    <section class="adim" id="adim-6" aria-label="Adım 6">
+    <section class="adim" id="adim-4" aria-label="Adım 4">
       <div class="adim-bas">
-        <span class="adim-no"><span class="gizli">Adım </span>6</span>
+        <span class="adim-no"><span class="gizli">Adım </span>4</span>
+        <div><h2>Kendi kuralınıza uyarlayın</h2><p>Prompt · kuralınız farklıysa</p></div>
       </div>
         <div class="kart">
           <div class="kart-bas">
-            <span class="kart-ad"><strong>Prompt</strong> · Cumartesi</span>
+            <span class="kart-ad"><strong>Prompt</strong> · Cumartesi kuralı</span>
             <button class="kopyala" type="button" data-hedef="k20"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
           </div>
 <pre id="k20">H2 formülünü şu kurala göre güncelle: Gün türü (F) "Hafta sonu çalıştı" ve gün Cumartesi ise normal süre 4,5 saattir; net süreden 4,5 çıkar, negatifse 0 olsun. Pazar günü çalışılmışsa net sürenin tamamı hâlâ aşan sayılır. Diğer günler (hafta içi) aynı kalsın: net süre eksi L3, negatifse 0. Yalnızca güncellenmiş H2 formülünü yaz; fonksiyon adları İngilizce, ayırıcı noktalı virgül (;). C sütunundaki tarihler tarih değeridir.</pre>
@@ -297,15 +177,98 @@ Kurallar:
           </div>
 <pre id="k21">G2 formülünü şu kurala göre güncelle: çıkış saati (E) giriş saatinden (D) küçükse çıkış ertesi gündedir (gece vardiyası); net süre buna göre hesaplanır. Diğer günlerde ve diğer kurallarda hiçbir şey değişmesin: net süre = (çıkış - giriş) saat cinsinden eksi günlük mola (L2), 2 ondalığa yuvarla; giriş ya da çıkış boşsa boş bırak. Yalnızca güncellenmiş G2 formülünü yaz; fonksiyon adları İngilizce, ayırıcı noktalı virgül (;).</pre>
         </div>
-        <p class="panel-baslik">Referans formül</p>
+    </section>
+
+    <section class="adim" id="formuller" aria-label="Referans formüller">
+      <div class="adim-bas">
+        <div><h2>Referans formüller</h2><p>Adım 1'in çıktısıyla karşılaştırmak için. ChatGPT farklı yazarsa sonuç aynı olmalı. Her formül ilk satırın formülüdür; aşağı çekilir.</p></div>
+      </div>
         <div class="kart">
           <div class="kart-bas">
-            <span class="kart-ad"><strong>G2</strong> · Gece vardiyası</span>
+            <span class="kart-ad"><strong>Net süre</strong> · G sütunu</span>
+            <button class="kopyala" type="button" data-hedef="k4"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="k4">=IF(OR(D2="";E2="");"";ROUND((E2-D2)*24-$L$2;2))</pre>
+        </div>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>Normal süreyi aşan</strong> · H sütunu</span>
+            <button class="kopyala" type="button" data-hedef="k5"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="k5">=IF(G2="";"";IF(F2="Hafta sonu çalıştı";G2;MAX(0;ROUND(G2-$L$3;2))))</pre>
+        </div>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>Hafta no</strong> · I sütunu</span>
+            <button class="kopyala" type="button" data-hedef="k6"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="k6">=WEEKNUM(C2;21)</pre>
+        </div>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>Personel</strong> · O sütunu</span>
+            <button class="kopyala" type="button" data-hedef="k10"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="k10">=IFERROR(INDEX($B$2:$B$200;MATCH(N2;$A$2:$A$200;0));"")</pre>
+        </div>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>Çalışılan iş günü</strong> · P sütunu</span>
+            <button class="kopyala" type="button" data-hedef="k11"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="k11">=COUNTIFS($A$2:$A$200;N2;$F$2:$F$200;"Çalıştı")</pre>
+        </div>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>Toplam net süre</strong> · Q sütunu</span>
+            <button class="kopyala" type="button" data-hedef="k12"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="k12">=SUMIF($A$2:$A$200;N2;$G$2:$G$200)</pre>
+        </div>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>Normal süreyi aşan toplam</strong> · R sütunu</span>
+            <button class="kopyala" type="button" data-hedef="k13"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="k13">=SUMIF($A$2:$A$200;N2;$H$2:$H$200)</pre>
+        </div>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>En yüksek haftalık toplam</strong> · S sütunu</span>
+            <button class="kopyala" type="button" data-hedef="k14"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="k14">=MAX(SUMIFS($G$2:$G$200;$A$2:$A$200;N2;$I$2:$I$200;36);SUMIFS($G$2:$G$200;$A$2:$A$200;N2;$I$2:$I$200;37);SUMIFS($G$2:$G$200;$A$2:$A$200;N2;$I$2:$I$200;38);SUMIFS($G$2:$G$200;$A$2:$A$200;N2;$I$2:$I$200;39);SUMIFS($G$2:$G$200;$A$2:$A$200;N2;$I$2:$I$200;40))</pre>
+        </div>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>Yıllık izin</strong> · T sütunu</span>
+            <button class="kopyala" type="button" data-hedef="k15"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="k15">=COUNTIFS($A$2:$A$200;N2;$F$2:$F$200;"Yıllık izin")</pre>
+        </div>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>Rapor</strong> · U sütunu</span>
+            <button class="kopyala" type="button" data-hedef="k16"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="k16">=COUNTIFS($A$2:$A$200;N2;$F$2:$F$200;"Rapor")</pre>
+        </div>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>Ücretsiz izin</strong> · V sütunu</span>
+            <button class="kopyala" type="button" data-hedef="k17"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+          </div>
+<pre class="tek" id="k17">=COUNTIFS($A$2:$A$200;N2;$F$2:$F$200;"Ücretsiz izin")</pre>
+        </div>
+        <div class="kart">
+          <div class="kart-bas">
+            <span class="kart-ad"><strong>Gece vardiyası</strong> · G sütununun yerine</span>
             <button class="kopyala" type="button" data-hedef="k22"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
           </div>
 <pre class="tek" id="k22">=IF(OR(D2="";E2="");"";ROUND((E2-D2+IF(E2&lt;D2;1;0))*24-$L$2;2))</pre>
         </div>
     </section>
+
     <aside class="not">
       <svg aria-hidden="true"><use href="#i-bilgi"/></svg>
       <p>Örnek dosyalardaki şirket, çalışanlar ve saatler kurgusaldır. Kendi verinizi kullanırken ad ve sicil numaralarını önce maskeleyin. Bu tablo yalnızca saatleri çıkarır; fazla çalışma ücreti ve yasal sınırlar için bordro sorumlunuza ya da mali müşavirinize danışın. Yapay zekâ taslağı hazırlar; kontrolü formül yapar, son kararı siz verirsiniz.</p>
