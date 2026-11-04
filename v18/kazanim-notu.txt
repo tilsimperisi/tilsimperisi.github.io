@@ -1,0 +1,7 @@
+Fen Bilimleri 7. sınıf, 1. yazılı (kurgusal). 8 açık uçlu soru, toplam 100 puan.
+Soru üst puanları: 1. soru 10, 2. soru 10, 3. soru 10, 4. soru 12, 5. soru 12, 6. soru 12, 7. soru 10, 8. soru 24.
+Kazanım A: 1. ve 2. soru.
+Kazanım B: 3. ve 4. soru.
+Kazanım C: 5. ve 6. soru, ayrıca 7. sorunun 6 puanı.
+Kazanım D: 8. soru, ayrıca 7. sorunun 4 puanı.
+7. soru iki kazanıma bağlı: 6 puan Kazanım C'ye, 4 puan Kazanım D'ye gider.

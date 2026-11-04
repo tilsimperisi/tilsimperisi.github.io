@@ -1,0 +1,7 @@
+Fen Bilimleri 7. sınıf, 2. yazılı (kurgusal). 6 açık uçlu soru, toplam 100 puan.
+Soru üst puanları: 1. soru 15, 2. soru 15, 3. soru 15, 4. soru 15, 5. soru 20, 6. soru 20.
+Kazanım A: 1. ve 2. soru.
+Kazanım B: 3. ve 4. soru.
+Kazanım C: 5. soru, ayrıca 6. sorunun 8 puanı.
+Kazanım D: 6. sorunun 12 puanı.
+6. soru iki kazanıma bağlı: 8 puan Kazanım C'ye, 12 puan Kazanım D'ye gider.
