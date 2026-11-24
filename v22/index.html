@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seç-Çevir'i yapay zekânıza yaptırın · RealTest AI</title>
+<meta name="description" content="İngilizce yazıyı seçince Türkçesini gösteren Windows aracını kendi kod asistanınıza sıfırdan yaptırmak için tek master prompt (9 adım).">
+<meta name="theme-color" content="#021637">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="RealTest AI">
+<meta property="og:title" content="Seç-Çevir'i kendi yapay zekânıza yaptırın">
+<meta property="og:description" content="Tek master prompt: İngilizce seçin, Türkçesi altında çıksın.">
+<meta property="og:url" content="https://tilsimperisi.github.io/v22/">
+<meta property="og:image" content="https://tilsimperisi.github.io/assets/paylasim.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/stil.css?v=3">
+<style>.logo-yazi{font-family:var(--baslik-font);font-weight:800;font-size:1.35rem;letter-spacing:.01em;color:var(--porselen);text-decoration:none;line-height:1}.logo-yazi span{color:var(--kehribar);margin-left:.3em}.logo-buyuk{font-size:2.2rem}</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-kopya" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="i-tamam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-indir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></symbol>
+  <symbol id="i-bilgi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+</svg>
+
+<header class="ust">
+  <div class="kap">
+    <a class="ust-logo logo-yazi" href="../" aria-label="RealTest AI ana sayfa">RealTest <span>AI</span></a>
+    <a class="ust-baglanti" href="https://www.youtube.com/@realtestaiofficial" target="_blank" rel="noopener">
+      <svg aria-hidden="true"><use href="#i-youtube"/></svg><span>YouTube kanalı</span>
+    </a>
+  </div>
+</header>
+
+<section class="giris">
+  <div class="kap">
+    <p class="ust-etiket">V22 · Hazır araç</p>
+    <h1>İngilizceyi seçin, Türkçesi altında çıksın: <em>aracı kendi yapay zekânıza yaptırın</em></h1>
+    <ul class="cipler" aria-label="Özet">
+      <li>Tek master prompt · 9 adım</li>
+      <li>Claude Code · Codex · Cursor</li>
+      <li>Windows 10 · 11</li>
+    </ul>
+    <div class="dugmeler">
+      <a class="dugme dugme-ana" href="https://github.com/perihangozukara/SecCevir" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#i-indir"/></svg>Hazır aracı indir (GitHub)
+      </a>
+      <a class="dugme dugme-ikinci" href="#master">Master prompta geç</a>
+    </div>
+  </div>
+</section>
+
+<div class="kap duzen">
+  <main>
+    <section class="adim" id="master" aria-label="Master prompt">
+      <div class="adim-bas">
+        <h2>Master prompt</h2>
+        <p>Bloğun tamamını kopyalayıp kod asistanınıza (Claude Code, Codex, Cursor gibi) yapıştırın. Asistan aracı 9 adımda yapar; her adımın sonunda size nasıl deneyeceğinizi söyler. Çalışıyorsa "tamam" yazın, sonraki adıma geçer.</p>
+      </div>
+      <div class="kart">
+        <div class="kart-bas">
+          <span class="kart-ad"><strong>Master prompt</strong> · 9 adım</span>
+          <button class="kopyala" type="button" data-hedef="p0"><svg class="ikon-kopya" aria-hidden="true"><use href="#i-kopya"/></svg><svg class="ikon-tamam" aria-hidden="true"><use href="#i-tamam"/></svg><span class="yazi" aria-live="polite">Kopyala</span></button>
+        </div>
+<pre id="p0">ROL
+Sen deneyimli bir Windows masaüstü geliştiricisisin. Benimle adım adım çalışacaksın.
+Ben programcı değilim. Her şeyi sade Türkçeyle, kısa cümlelerle anlat. Bir teknik terimi
+ilk kullandığında tek cümleyle açıkla.
+
+HEDEF
+"Seç-Çevir" adında küçük bir Windows aracı yapacağız. Ben herhangi bir programda İngilizce
+bir yazıyı fareyle seçince Türkçesi seçimin hemen altında küçük bir kutuda çıkacak.
+Türkçe yazılara dokunmayacak.
+
+TEKNİK KISITLAR (kesin)
+- Dil C#. Bütün kod TEK dosyada: SecCevir.cs. Arayüz WinForms.
+- .NET Framework 4 hedeflenir. Kurulum yok, NuGet ya da başka ek paket yok.
+- Derleme: Windows'ta hazır gelen derleyiciyle, bir derle.bat dosyasıyla:
+  %WINDIR%\Microsoft.NET\Framework64\v4.0.30319\csc.exe /target:winexe /optimize
+  Gereken kütüphaneler aynı klasörden eklenir: System.Windows.Forms, System.Drawing,
+  System.Web.Extensions (JSON), System.Net.Http, WPF klasöründen System.Speech,
+  UIAutomationClient, UIAutomationTypes, WindowsBase. Sonuç: SecCevir.exe.
+- Windows 10 ve 11'de çalışır. Aynı anda tek kopya çalışır.
+- API anahtarı kullanılmaz, hiçbir yere yazılmaz.
+
+ÖZELLİKLER (yalnızca bunlar)
+1. Tepsi simgesi: saatin yanında durur. Sol tık Yaz-Çevir penceresini açar. Sağ tık menüsü:
+   "Yaz-Çevir (Ctrl+Alt+T)", "Seçince çevir" (aç/kapat), "Windows ile başlat" (kayıt
+   defterindeki kullanıcı Run anahtarı), "Çıkış". Açılışta kısa bir bilgi balonu çıkar.
+2. Seçimi algılama: alt seviye fare kancası (low-level mouse hook) ayrı bir iş parçacığında
+   çalışır ve her dakika yeniden kurulur. 6 pikselden fazla sürükleyip bırakmak ya da çift
+   tıklamak seçim sayılır. Sağ tık ya da tekerlek çeviri kutusunu kapatır.
+3. Normal programlarda okuma: Shift/Ctrl/Alt/Win bırakılana kadar en çok 1,5 sn bekle.
+   Panoyu yedekle (yalnızca yazı, RTF, HTML, CSV, dosya listesi, resim), Ctrl+C'yi tek
+   SendInput çağrısıyla gönder, pano sıra numarası değişince yazıyı oku, panoyu geri koy.
+   Yazı gelmezse 200 ms sonra bir kez daha dene.
+4. Terminallerde okuma: öndeki pencere sınıfı ConsoleWindowClass,
+   CASCADIA_HOSTING_WINDOW_CLASS, mintty, PuTTY ya da VirtualConsoleClass ise HİÇ tuş
+   gönderme. 1,5 sn boyunca hem UI Automation (TextPattern seçimi) hem panonun değişip
+   değişmediğine bak; ilk gelen yazıyı al.
+5. Dokunulmayan yerler: Dosya Gezgini, masaüstü, görev çubuğu ve aracın kendi penceresi.
+6. Türkçe atlama: harflerin en az %2'si ç ğ ı İ ö ş ü ise çevirme. Google kaynağı "tr"
+   bulursa kutuyu kapat. Harf yoksa çevirme. En çok 1000 karakter çevrilir; kesildiyse bunu
+   kutuda söyle.
+7. Çeviri: Google Çeviri'nin anahtarsız adresi
+   https://translate.googleapis.com/translate_a/single?client=gtx&amp;sl=auto&amp;tl=&lt;dil&gt;&amp;dt=t&amp;q=...
+   Hata verirse yedek adres
+   https://clients5.google.com/translate_a/t?client=dict-chrome-ex&amp;sl=auto&amp;tl=&lt;dil&gt;&amp;q=...
+   10 sn zaman aşımı. HTTP 429 gelirse 60 sn istek gönderme ve bunu Türkçe söyle.
+   Son 300 çeviriyi bellekte tut.
+8. Çeviri kutusu: kenarlıksız, odak çalmayan, en üstte duran küçük pencere. Üstte
+   "SEÇ-ÇEVİR" başlığı, sağda 🔊 (sesli oku) ve 📋 (Türkçeyi kopyala, kısa süre ✓ göster).
+   Altında İngilizce yazı (soluk, en çok 300 karakter), en altta Türkçe çeviri. Seçimin
+   altında açılır; altta yer yoksa üstünde. Çeviri gelene kadar "…" görünür.
+9. Yaz-Çevir penceresi (tepsi tıklaması ya da her yerde çalışan Ctrl+Alt+T): ekranın sağ
+   altında açılır. Üst kutuya yazılan yazı, yazmayı bırakınca (600 ms) kendiliğinden
+   çevrilir: Türkçe yazıldıysa İngilizceye, İngilizce yazıldıysa Türkçeye. Yönü gösteren
+   bir durum yazısı olur. Düğmeler: "✨ Doğal yap", "Konuş" (Win+H ile Windows sesle yazma
+   panelini açar), "Kopyala", "Dinle" (çalarken "Duraklat", duraklatılmışken "Devam"),
+   "Temizle". Ctrl+Enter kopyalar ve kapatır, Esc kapatır, Ctrl+A tümünü seçer.
+   Kapatma düğmesi pencereyi gizler, programı kapatmaz. En çok 4000 karakter.
+10. Doğal İngilizce: "✨ Doğal yap" bilgisayardaki claude.exe'yi bulur
+   (önce %USERPROFILE%\.local\bin\claude.exe, sonra PATH) ve şöyle çalıştırır:
+   claude -p --model haiku --tools "" --strict-mcp-config --no-session-persistence
+   --output-format json --system-prompt-file &lt;geçici klasördeki sistem metni&gt;
+   Geçici boş bir klasörde çalışır. Alt sürece ANTHROPIC_API_KEY ve ANTHROPIC_AUTH_TOKEN
+   verilmez (silinir). Yazılan metin ve varsa Google çevirisi standart girişten gönderilir.
+   Claude'dan yalnızca {"natural": "...", "note": "..."} JSON'u istenir: natural doğal
+   İngilizce, note kısa ve sade bir Türkçe not (en önemli değişiklik ve nedeni). Sistem
+   metni: anlamı koru, fikir ekleme/çıkarma, İngilizce yazıldıysa en az değişiklikle düzelt,
+   sesle yazma hatalarının arkasındaki niyeti oku. En çok 2000 karakter, 90 sn zaman aşımı.
+   Claude Code yoksa ya da giriş yapılmamışsa anlaşılır bir Türkçe hata göster.
+11. Sesli okuma: Google'ın ses adresinden
+   (https://translate.google.com/translate_tts?ie=UTF-8&amp;client=tw-ob&amp;tl=&lt;dil&gt;&amp;q=...)
+   en çok 190 karakterlik parçalarla mp3 al (cümle, virgül ya da kelime sınırından böl),
+   tek dosyada birleştir, MCI (winmm.dll mciSendString) ile çal. Olmazsa Windows'un
+   İngilizce sesine (System.Speech) geç. En çok 3000 karakter.
+12. Görünüm: lacivert zemin, altın vurgu, koyu başlık çubuğu, Windows 11'de yuvarlak köşe.
+   Simge kodla çizilir (lacivert kare, altın "Ç"). Ekran ölçeğine (DPI) uyar.
+13. Log: exe'nin yanındaki SecCevir.log dosyasına yalnızca bir yazının NEDEN çevrilmediği
+   ya da hata yazılır. 200 KB'ı geçince silinip yeniden başlar. Exe'nin yanında boş bir
+   SecCevir.debug dosyası varsa adım adım ayrıntı da yazılır.
+
+GİZLİLİK KURALLARI (kesin)
+- Seçilen ya da yazılan metnin kendisi log'a ve hiçbir dosyaya YAZILMAZ. Yalnızca uzunluğu
+  yazılabilir.
+- Metin yalnızca çeviri ve ses için Google'a, "Doğal yap" basılınca Claude Code'a gider.
+  Başka hiçbir yere gönderilmez.
+- Kodda anahtar, şifre ya da kişisel bilgi olmaz.
+
+ÇALIŞMA KURALLARI
+- Adım adım ilerle. Her adımda: ne yaptığını 2-3 cümleyle anlat, kodu yaz, derle.bat ile
+  derle, sonra bana nasıl deneyeceğimi somut olarak söyle (hangi programı açayım, neyi
+  seçeyim, ne görmeliyim).
+- Ben "tamam" demeden sonraki adıma geçme.
+- Bir şey çalışmazsa önce log'a ve derleyici hatasına bak, nedeni sade dille söyle, sonra düzelt.
+- Listede olmayan özellik EKLEME. "Daha iyi olur" diye ayar penceresi, dil seçimi, güncelleme
+  denetimi, kurulum programı gibi şeyler yapma. Bir şey eklemek istersen önce bana sor.
+- Bir şeyden emin değilsen tahmin etme, bana sor.
+- İlk iş: bilgisayarımda csc.exe'nin yukarıdaki yolda olup olmadığını kontrol et ve bana
+  söyle. Sonra 1. adımı öner.
+
+ADIMLAR (bu sırayla; her adımın sonunda dur, ben "tamam" demeden sonrakine geçme)
+
+Adım 1 · İskelet: tepsi simgesi ve derleme
+- Yap: derle.bat'ı ve tepsi simgesini yap. Sağ tık menüsünde şimdilik yalnızca Çıkış
+  olsun. Tek kopya çalışsın.
+- Beklenen: klasörde SecCevir.cs, derle.bat; çift tıklayınca SecCevir.exe oluşur.
+- Deneme: derle.bat'a çift tıklayın, sonra SecCevir.exe'ye. Saatin yanında altın "Ç"
+  simgesi çıkmalı ve "Seç-Çevir çalışıyor" balonu görünmeli. Exe'ye ikinci kez tıklayın:
+  ikinci simge çıkmamalı. Sağ tık → Çıkış: simge kaybolmalı.
+
+Adım 2 · Seçimi algılama ve okuma (normal programlar)
+- Yap: fare kancasını, seçim algılamayı ve Ctrl+C ile okumayı yap. Panoyu yedekleyip geri
+  koy. Şimdilik seçilen yazıyı çeviri kutusunda olduğu gibi göster.
+- Beklenen: seçimin altında küçük kutu, içinde seçilen yazı.
+- Deneme: Not Defteri'ne "Hello world" yazın ve fareyle seçin; kutuda aynı yazı çıkmalı.
+  Önce başka bir kelimeyi Ctrl+C ile kopyalayın, sonra seçim yapın, sonra Ctrl+V basın:
+  ilk kopyaladığınız kelime yapışmalı (pano bozulmamış). Dosya Gezgini'nde bir dosya adı
+  seçin: kutu çıkmamalı.
+
+Adım 3 · Google çevirisi ve Türkçe atlama
+- Yap: Google çevirisini, yedek adresi, 429 molasını, önbelleği ve Türkçe atlamayı ekle.
+  Kutuda üstte İngilizce, altta Türkçe olsun.
+- Beklenen: kutuda önce "…", sonra Türkçe çeviri.
+- Deneme: Not Defteri'nde "The meeting has been moved to Friday." seçin; altında Türkçesi
+  çıkmalı. "Bugün hava çok güzel." seçin: kutu çıkmamalı. İnterneti kapatıp tekrar seçin:
+  "Çeviri alınamadı (internet bağlantısını kontrol edin)" yazmalı.
+
+Adım 4 · Terminalde tuş göndermeden okuma
+- Yap: terminal penceresini tanı, Ctrl+C gönderme; seçimi UI Automation ve panoyla oku.
+- Beklenen: terminalde de çeviri çıkar, çalışan komut durmaz.
+- Deneme: Windows Terminal'i açın, ping -t localhost yazın (durmadan çalışan bir komut).
+  Çalışırken bir satırdaki "Reply from" yazısını seçin. Türkçesi çıkmalı ve ping durmadan
+  devam etmeli.
+
+Adım 5 · Yaz-Çevir penceresi ve kısayol
+- Yap: Yaz-Çevir penceresini, Ctrl+Alt+T kısayolunu, iki yönlü çeviriyi ve Kopyala,
+  Temizle, Konuş düğmelerini ekle. Ctrl+Enter ve Esc çalışsın. Menüye Yaz-Çevir satırını
+  ekle.
+- Beklenen: sağ altta açılan koyu pencere.
+- Deneme: Ctrl+Alt+T basın, "Yarın sabah toplantıya katılamayacağım." yazın ve bekleyin;
+  altta İngilizcesi çıkmalı, durum satırında "Türkçe → İngilizce" yazmalı. Ctrl+Enter
+  basın, Not Defteri'nde Ctrl+V: İngilizcesi yapışmalı. "Konuş"a basın: Windows sesle
+  yazma paneli açılmalı.
+
+Adım 6 · Sesli okuma ve kutudaki düğmeler
+- Yap: sesli okumayı ekle (Google sesi, olmazsa Windows sesi). Çeviri kutusuna 🔊 ve 📋
+  düğmelerini, pencereye Dinle / Duraklat / Devam'ı bağla.
+- Beklenen: düğmeye basınca ses çalar.
+- Deneme: Not Defteri'nde İngilizce bir cümle seçin, kutudaki 🔊'ye basın: İngilizce
+  okunmalı. 📋'ye basın, ✓ görünmeli; Not Defteri'ne yapıştırın: Türkçe çeviri gelmeli.
+  Yaz-Çevir'de "Dinle"ye basın; çalarken düğme "Duraklat" olmalı.
+
+Adım 7 · Doğal İngilizce (Claude Code)
+- Yap: '✨ Doğal yap' düğmesini claude -p ile bağla. API anahtarı değişkenlerini alt
+  süreçten sil. Sonucu ve Türkçe notu pencerede göster.
+- Beklenen: çıktı kutusunda daha doğal İngilizce, altında kısa Türkçe not.
+- Deneme: Önce bir terminalde claude yazıp Claude Code'a girişli olduğunuzu kontrol edin.
+  Yaz-Çevir'e "Bu işi en kısa zamanda bitirmemiz lazım." yazın, "✨ Doğal yap"a basın.
+  Durumda "✨ Claude düzenliyor…", sonra doğal İngilizce ve Türkçe not çıkmalı. "I am agree
+  with you" yazıp deneyin: düzeltilmiş hâli ve nedeni gelmeli.
+
+Adım 8 · Menü, log ve görünüm
+- Yap: 'Seçince çevir' ve 'Windows ile başlat' seçeneklerini, SecCevir.log ve
+  SecCevir.debug kaydını, lacivert-altın görünümü ekle. Log'a seçilen yazıyı yazmadığını
+  bana göster.
+- Beklenen: tam menü, log dosyası, koyu tema.
+- Deneme: Sağ tık → "Seçince çevir" işaretini kaldırın, bir yazı seçin: kutu çıkmamalı.
+  Tekrar açın. Türkçe bir cümle seçin, sonra exe'nin yanındaki SecCevir.log'u açın: "metin
+  Türkçe görünüyor (… karakter)" gibi bir satır olmalı, cümlenin kendisi olmamalı.
+  "Windows ile başlat"ı açın, bilgisayarı yeniden başlatın: simge kendiliğinden gelmeli.
+
+Adım 9 · (İsteğe bağlı) GitHub'da otomatik sürüm
+- Yap: .github/workflows/surum.yml yaz. Ana dala SecCevir.cs ya da derle.bat gönderilince
+  Windows makinesinde derle.bat çalışsın, exe yoksa hata versin, varsa v1.0.&lt;çalışma
+  sayısı&gt; adıyla sürüm yayınlasın. Elle çalıştırınca 'yayınla' kapalıysa yalnızca deneme
+  exe'si yüklesin.
+- Beklenen: GitHub'da "Actions" sekmesinde yeşil bir çalışma ve "Releases" altında
+  SecCevir.exe.
+- Deneme: Depoyu GitHub'a gönderdikten sonra Actions sekmesine bakın; çalışma yeşil
+  bitmeli, Releases'ta exe görünmeli. (Depoyu açmak ve göndermek sizin hesabınızdadır;
+  deponun herkese açık mı gizli mi olacağına siz karar verirsiniz.)</pre>
+      </div>
+    </section>
+    <aside class="not">
+      <svg aria-hidden="true"><use href="#i-bilgi"/></svg>
+      <p>Ekrandan okuma (Ctrl+Alt+O) bu promptta yok; isterseniz kendiniz ekleyin. Seçtiğiniz ve yazdığınız yazı çeviri ve ses için Google'a gider, gizli yazılarda kullanmayın. "Doğal yap" düğmesi Claude Code hesabınızın kullanım sınırından düşer; geri kalan her şey Claude Code olmadan çalışır. Araç yalnızca Windows 10 ve 11'de çalışır. Yapay zekâ kodu yazar; denemeyi ve son kararı siz verirsiniz.</p>
+    </aside>
+  </main>
+</div>
+
+<footer class="alt">
+  <div class="kap">
+    <a class="alt-logo logo-yazi logo-buyuk" href="https://www.youtube.com/@realtestaiofficial" target="_blank" rel="noopener">RealTest <span>AI</span></a>
+    <a class="alt-kanal" href="https://www.youtube.com/@realtestaiofficial" target="_blank" rel="noopener">youtube.com/@realtestaiofficial</a>
+    <small>© 2026 RealTest AI · Sıkıcı işlerinizi yapay zekâya devredin</small>
+  </div>
+</footer>
+
+<script src="../assets/sayfa.js?v=3"></script>
+</body>
+</html>
